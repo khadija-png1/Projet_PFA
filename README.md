@@ -24,4 +24,4 @@ cd backend
 node server.js
 
 8. IA 
-Les résultats sont envoyés au module IA pour analyse et recommandations.
+Les résultats sont envoyés au module IA pour analyse et recommandations.# Projet_PFA
