@@ -1,0 +1,17 @@
+.attriutes {
+  background: linear-gradient(to right, #0c2269, #4435a5) !important;
+  color: white !important;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* texte du tableau */
+.table tbody tr td {
+  color: #2c2c2c;
+}
+
+/* hover lignes */
+.table tbody tr:hover {
+  background-color: #f5f7ff;
+  transition: 0.3s;
+}

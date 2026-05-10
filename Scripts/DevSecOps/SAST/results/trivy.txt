@@ -1,0 +1,52 @@
+
+Report Summary
+
+┌───────────────────┬──────┬─────────────────┬─────────┐
+│      Target       │ Type │ Vulnerabilities │ Secrets │
+├───────────────────┼──────┼─────────────────┼─────────┤
+│ package-lock.json │ npm  │        9        │    -    │
+└───────────────────┴──────┴─────────────────┴─────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+
+package-lock.json (npm)
+=======================
+Total: 9 (UNKNOWN: 0, LOW: 0, MEDIUM: 4, HIGH: 4, CRITICAL: 1)
+
+┌─────────┬──────────────────┬──────────┬────────┬───────────────────┬───────────────┬──────────────────────────────────────────────────────────────┐
+│ Library │  Vulnerability   │ Severity │ Status │ Installed Version │ Fixed Version │                            Title                             │
+├─────────┼──────────────────┼──────────┼────────┼───────────────────┼───────────────┼──────────────────────────────────────────────────────────────┤
+│ lodash  │ CVE-2019-10744   │ CRITICAL │ fixed  │ 4.17.10           │ 4.17.12       │ nodejs-lodash: prototype pollution in defaultsDeep function  │
+│         │                  │          │        │                   │               │ leading to modifying properties                              │
+│         │                  │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2019-10744                   │
+│         ├──────────────────┼──────────┤        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│         │ CVE-2018-16487   │ HIGH     │        │                   │ >=4.17.11     │ lodash: Prototype pollution in utilities function            │
+│         │                  │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2018-16487                   │
+│         ├──────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│         │ CVE-2020-8203    │          │        │                   │ 4.17.19       │ nodejs-lodash: prototype pollution in zipObjectDeep function │
+│         │                  │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2020-8203                    │
+│         ├──────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│         │ CVE-2021-23337   │          │        │                   │ 4.17.21       │ nodejs-lodash: command injection via template                │
+│         │                  │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2021-23337                   │
+│         ├──────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│         │ CVE-2026-4800    │          │        │                   │ 4.18.0        │ lodash: lodash: Arbitrary code execution via untrusted input │
+│         │                  │          │        │                   │               │ in template imports                                          │
+│         │                  │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2026-4800                    │
+│         ├──────────────────┼──────────┤        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│         │ CVE-2019-1010266 │ MEDIUM   │        │                   │ 4.17.11       │ lodash: uncontrolled resource consumption in Data handler    │
+│         │                  │          │        │                   │               │ causing denial of service                                    │
+│         │                  │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2019-1010266                 │
+│         ├──────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│         │ CVE-2020-28500   │          │        │                   │ 4.17.21       │ nodejs-lodash: ReDoS via the toNumber, trim and trimEnd      │
+│         │                  │          │        │                   │               │ functions                                                    │
+│         │                  │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2020-28500                   │
+│         ├──────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│         │ CVE-2025-13465   │          │        │                   │ 4.17.23       │ lodash: prototype pollution in _.unset and _.omit functions  │
+│         │                  │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2025-13465                   │
+│         ├──────────────────┤          │        │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+│         │ CVE-2026-2950    │          │        │                   │ 4.18.0        │ lodash: Lodash: Prototype pollution allows deletion of       │
+│         │                  │          │        │                   │               │ built-in prototype properties via array...                   │
+│         │                  │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2026-2950                    │
+└─────────┴──────────────────┴──────────┴────────┴───────────────────┴───────────────┴──────────────────────────────────────────────────────────────┘

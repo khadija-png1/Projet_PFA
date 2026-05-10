@@ -1,0 +1,15 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# React
+node_modules/
+
+# Reports
+*.json
+*.xml
+*.html
+
+# Logs
+*.log

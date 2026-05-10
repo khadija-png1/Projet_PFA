@@ -1,0 +1,135 @@
+.custom-topbar {
+  height: 85px;
+  background: #ffffff;
+  border-bottom: 1px solid #edf1f7;
+  padding: 0 30px;
+}
+
+/* SEARCH */
+
+.custom-search {
+  width: 420px;
+  height: 52px;
+  background: #f8f9fc;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #e3e6f0;
+  transition: all 0.3s ease;
+}
+
+.custom-search:hover {
+  border-color: #4435a5;
+  box-shadow: 0 0 0 4px rgba(68, 53, 165, 0.08);
+}
+
+.custom-search input {
+  background: transparent !important;
+  font-size: 0.95rem;
+  padding-left: 10px;
+}
+
+.custom-search input:focus {
+  box-shadow: none !important;
+}
+
+.search-icon {
+  width: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #4435a5;
+  font-size: 1rem;
+}
+
+.search-btn {
+  border: none;
+  padding: 0 22px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(to right, #0c2269, #4435a5);
+  transition: 0.3s;
+}
+
+.search-btn:hover {
+  opacity: 0.9;
+}
+
+/* ICONS */
+
+.header-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #f4f6fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.header-icon-box:hover {
+  background: linear-gradient(to right, #0c2269, #4435a5);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.header-icon-box i {
+  font-size: 1.1rem;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #e74a3b;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* USER */
+
+.user-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.user-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0c2269;
+}
+
+.user-role {
+  font-size: 0.75rem;
+  color: #858796;
+}
+
+.img-profile {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border: 3px solid #eef1ff;
+}
+
+/* MOBILE */
+
+.mobile-toggle {
+  color: #4435a5 !important;
+  font-size: 1.2rem;
+}

@@ -1,0 +1,55 @@
+/* buttonScan.css */
+
+.scan-btn {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  padding: 14px 28px;
+
+  border: none;
+  border-radius: 15px;
+
+  background: linear-gradient(to right, #0c2269, #4435a5);
+
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+
+  box-shadow: 0 6px 18px rgba(68, 53, 165, 0.3);
+}
+
+.scan-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+
+  box-shadow: 0 10px 25px rgba(68, 53, 165, 0.45);
+
+  background: linear-gradient(to right, #102a82, #5a49d6);
+}
+
+.scan-btn:active {
+  transform: scale(0.97);
+}
+
+.scan-icon {
+  width: 45px;
+  height: 45px;
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.15);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.2rem;
+}
+
+.scan-text {
+  letter-spacing: 0.5px;
+}

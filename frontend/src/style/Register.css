@@ -1,0 +1,27 @@
+.container-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to right, #0c2269, #4435a5);
+}
+
+.card {
+  border-radius: 1.7rem!important;
+
+}
+.image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.form-control-user:focus {
+  border-color: #4435a5 !important;
+  box-shadow: 0 0 8px rgba(68, 53, 165, 0.6) !important;
+}
+.btn-user{
+ background-color: #4435a5 !important;
+ color:antiquewhite !important;
+
+  box-shadow: 0 0 8px rgba(110, 99, 180, 0.6) !important;
+} 
