@@ -1,0 +1,50 @@
+﻿<ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+        <a class="nav-link " asp-controller="Home" asp-action="Index">
+            <i class="fas fa-home me-1"></i> Home
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Offre" asp-action="OffrePostuler">
+            <i class="fa-solid fa-file-signature  me-1"></i> Offres Postuler
+        </a>
+    </li>
+    <li class="nav-item ">
+        <a class="nav-link" asp-controller="Offre" asp-action="AjoutOffreEmploi">
+            <i class="fa-solid fa-bullhorn me-1"></i> Offres Publier
+        </a>
+    </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-user me-1"></i> Profile
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+        <li>
+            <a class="dropdown-item" asp-controller="Compte" asp-action="RecruteurProfil">Mon profil</a>
+        </li>
+        <li>
+                <a class="dropdown-item" asp-controller="Compte" asp-action="EntrepriseProfil">Entreprise Profil</a>
+        </li>
+    </ul>
+</li>
+
+</ul>
+
+<style>
+    /* Tous les liens du navbar */
+    #mainNav .nav-link {
+        color: rgb(32 124 106) !important; /* couleur normale */
+        transition: all 0.2s ease-in-out;
+    }
+
+        /* Hover des liens */
+        #mainNav .nav-link:hover {
+            color: white !important; /* couleur dorée */
+            transform: translateY(-2px);
+        }
+
+        /* Icônes héritent de la couleur du lien */
+        #mainNav .nav-link i {
+            color: inherit;
+        }
+</style>

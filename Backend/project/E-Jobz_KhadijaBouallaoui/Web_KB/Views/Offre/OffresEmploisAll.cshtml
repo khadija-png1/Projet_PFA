@@ -1,0 +1,156 @@
+﻿@model List<Web_KB.Models.OffresEmploiViewModelAll>
+
+@{
+    ViewData["Title"] = "Offres d'emploi";
+    Layout = "~/Views/Shared/_NavbarLayout.cshtml";
+
+    // Groupement des offres par secteur
+    var offresParSecteur = Model
+        .GroupBy(o => o.Entreprise?.Secteur ?? "Autre")
+        .OrderBy(g => g.Key);
+}
+
+<!-- HERO / SEARCH -->
+<div class=" p-4 rounded-4 shadow-lg mb-5 text-center">
+    <h2 class="fw-bold mb-3">
+        Trouvez votre <span class="textGreen">emploi idéal</span>
+    </h2>
+
+    <form asp-controller="Offre"
+          asp-action="OffresEmploisAll"
+          method="get"
+          class="row g-3 justify-content-center">
+
+        <div class="col-md-4">
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-briefcase"></i></span>
+                <input type="text" name="  titre" class=" hoverGreen form-control" placeholder="Titre de l'offre" value="@ViewData["TitreFilter"]" />
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="input-group">
+                <span class="input-group-text "><i class="bi bi-building"></i></span>
+                <input type="text" name="secteur" class="hoverGreen form-control" placeholder="Secteur de l'entreprise" value="@ViewData["SecteurFilter"]" />
+            </div>
+        </div>
+
+        <div class="col-md-2 d-grid">
+            <button type="submit" class=" hoverGreen btn">
+                <i class="textGreen bi bi-search me-1"></i> Rechercher
+            </button>
+        </div>
+    </form>
+</div>
+
+<!-- AFFICHAGE DES SECTEURS -->
+@if (!Model.Any())
+{
+    <p class="text-center text-muted">Aucune offre trouvée pour votre recherche.</p>
+}
+else
+{
+    <div class=" row g-4 mb-5">
+        @foreach (var groupe in offresParSecteur)
+        {
+            <div class="col-md-3">
+                <a href="@Url.Action("OffresEmploisAll", "Offre", new { secteur = groupe.Key })" class="text-decoration-none">
+                    <div class=" ColorCard card sector-card border-0 shadow-sm text-center p-3 h-100">
+                        <i class="bi bi-folder-fill mb-2" style="font-size:2rem;"></i>
+                        <h5 class="fw-bold text-dark">@groupe.Key</h5>
+                        <p class="text-muted small">@groupe.Count() offres</p>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+
+    <!-- LISTE DES OFFRES FILTRÉES -->
+    <h4 class="fw-bold text-dark mt-5 mb-3">
+        <i class="bi  bi-briefcase-fill  me-1"></i>
+        Offres trouvées
+    </h4>
+
+    <div class="row g-4">
+        @foreach (var offre in Model)
+        {
+            <div class="col-lg-4 col-md-6">
+                <div class=" ColorCard card offer-card border-0 shadow-sm mb-4 h-100">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="fw-bold  mb-2">@offre.Titre</h5>
+                        <div class="text-muted small mb-2"><i class="bi bi-building me-1"></i>@offre.Entreprise?.Nom</div>
+                        <div class="text-muted small mb-3"><i class="bi bi-calendar-event me-1"></i>@offre.DatePublication.ToShortDateString()</div>
+                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                            <span class="badge textGreen rounded-pill px-3 py-2">@offre.Statut</span>
+                            <a asp-controller="Offre" asp-action="OffresEmploiDetail" asp-route-id="@offre.Id" class="btn btn-light btn-sm">
+                                <div>@offre.Id</div>
+                                <span class="textGreen">Voir détail</span> <i class=" bi bi-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+<style>
+    .sector-card {
+        border-radius: 16px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        cursor: pointer;
+    }
+
+        .sector-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+    .offer-card {
+        border-radius: 16px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+    .ColorCard {
+            background-color: #f0ecec !important;
+            color:  rgb(32, 124, 106) !important;
+        }
+
+    .ColorGreenCard{
+        background-color: rgb(32, 124, 106) !important;
+    }
+
+    .ColorGreen {
+        background-color: rgb(32, 124, 106) !important;
+    }
+    .bi{
+        color: rgb(32, 124, 106) !important;
+    }
+    .btnGreen {
+        background-color: rgb(32, 124, 106) !important;
+
+    }
+
+    .textGreen{
+        color: rgb(32, 124, 106) !important;
+    }
+
+    .hoverGreen:hover {
+        border-color: rgb(32, 124, 106);
+    }
+
+    .hoverGreen:focus {
+        border-color: rgb(32, 124, 106);
+        box-shadow: 0 0 0 0.2rem rgba(32, 124, 106, 0.25);
+    }
+
+    .hoverGreen:active {
+        background-color: rgba(32, 124, 106, 0.35) !important;
+        box-shadow: 0 0 0 0.25rem rgba(32, 124, 106, 0.35) !important;
+    }
+</style>

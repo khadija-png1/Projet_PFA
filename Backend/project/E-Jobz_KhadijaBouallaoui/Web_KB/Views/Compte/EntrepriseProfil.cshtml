@@ -1,0 +1,158 @@
+﻿@model EntrepriseProfilViewModel
+@{
+    ViewData["Title"] = "Entreprise Profil";
+    Layout = "~/Views/Shared/_NavbarLayoutRecruteur.cshtml";
+}
+
+
+<div class="container emp-profile mt-5">
+  
+    <div id="cardprofile" class="card shadow-lg p-4">
+        <form asp-action="EntrepriseProfil" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            @if (TempData["Erreur"] != null)
+            {
+                <div class="alert alert-warning text-center">
+                    @TempData["Erreur"]
+                </div>
+            }
+            <!-- PHOTO ET NOM -->
+            <div class="row mb-4 align-items-center">
+                <div class="col-md-2 text-center">
+                    <img id="LogoImage"
+                         src="@(string.IsNullOrWhiteSpace(Model?.Logo) ? Url.Content("~/images/logoEntreprise.png") : Model.Logo)"
+                         class="img-fluid rounded-circle border border-3 border-success"
+                         style="width:120px; height:120px; cursor:pointer; object-fit:cover;" />
+                    <input type="file" id="LogoUpload" name="LogoUpload" class="d-none" accept="image/*" />
+                </div>
+            </div>
+
+            <hr />
+
+            <!-- INFOS -->
+            <div class="row mb-4">
+                <div class="col-md-6 mb-2"><label>Nom</label><input asp-for="Nom" class="form-control"  /></div>
+                <div class="col-md-6 mb-2"><label>Secteur</label><input asp-for="Secteur" class="form-control"  /></div>
+                <div class="col-md-6 mb-2"><label>Description</label><input asp-for="Description" class="form-control"  /></div>
+               
+            </div>
+
+            <hr />
+
+          
+
+            <div class="containBtn">
+                <button type="submit" class="btn btn-su ">
+                    <h5 class="text-color">Enregister</h5>
+                </button>
+                <button type="submit" class="btn btn-outline-primary asp-controller="Compte" asp-action="Logout">
+                    <h5 class="text-color">Se déconnecter</h5>
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+<style>
+
+    <style >
+    /* Profil global */
+    #cardprofile {
+        background-color: #fff;
+        border-radius: 1rem;
+        transition: all 0.3s;
+    }
+
+    #cardprofile:hover {
+        box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+
+    /* Inputs */
+    .form-control {
+        border-radius: 12px;
+        border: 1px solid #ced4da;
+        padding: 10px 14px;
+        transition: all 0.2s;
+    }
+
+        .form-control:focus {
+            border-color: rgb(32, 124, 106);
+            box-shadow: 0 0 8px rgba(32,124,106,0.3);
+        }
+
+    /* Compétences et Formations */
+    .list-group-item {
+        background-color: #f8f9fa;
+        transition: all 0.2s;
+    }
+
+        .list-group-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+        }
+
+    /* Boutons */
+    .btn-success {
+        background-color: rgb(32,124,106);
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.2s;
+    }
+
+        .btn-success:hover {
+            background-color: rgb(32,150,106);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+    .btn-outline-success {
+        border-radius: 30px;
+        font-weight: 500;
+    }
+
+        .btn-outline-success:hover {
+            background-color: rgb(32,124,106);
+            color: #fff;
+        }
+
+    .btn-outline-primary {
+        border-radius: 30px;
+        font-weight: 500;
+    }
+
+        .btn-outline-primary:hover {
+            background-color: #0d6efd;
+            color: #fff;
+        }
+
+    /* Image profile */
+    #profileImage {
+        transition: all 0.3s;
+    }
+
+        #profileImage:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+</style>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Profile image preview
+        const logoImage = document.getElementById("LogoImage");
+        const logoUpload = document.getElementById("LogoUpload");
+        logoImage.addEventListener("click", () => logoUpload.click());
+        logoUpload.addEventListener("change", function() {
+            const file = this.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = e => logoImage.src = e.target.result;
+            reader.readAsDataURL(file);
+        });
+
+
+    });
+</script>

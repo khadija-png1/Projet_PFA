@@ -1,0 +1,34 @@
+﻿@using Web_KB.Models;
+@model VerifyEmailViewModel;
+
+@{
+    ViewData["Title"] = "VerifyEmail";
+    Layout = "~/Views/Shared/_CompteLayout.cshtml";
+}
+<div class="compte-container">
+    <div class="compte-image" aria-hidden="true"></div>
+    <div class="compte-box">
+        <img class="masthead-avatar mb-5" src="../images/logo.png" alt="..." />
+
+        <h2 class="text mb-5">Vérifier Email</h2>
+        <form asp-action="VerifyEmail" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <input id="colorgreen" type="submit" value="VerifyEmail" class="btn btn-success w-100 p-2" />
+            <div class="text-center">
+                <a asp-controller="Home" asp-action="Index" class="text-decoration-none mt-3">Retour au home</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    #colorgreen {
+        background-color: rgb(32, 124, 106) !important; /* couleur verte */
+    }
+
+</style>

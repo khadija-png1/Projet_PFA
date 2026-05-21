@@ -1,0 +1,191 @@
+﻿@model Web_KB.Models.PublicationPageViewModel
+
+@{
+    ViewData["Title"] = "Fil des publications";
+    Layout = "~/Views/Shared/_NavbarLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="row g-4">
+
+        <!-- ===== COLONNE GAUCHE : PUBLICATIONS ===== -->
+        <div class="col-lg-8">
+
+            <!-- ===== FORMULAIRE NOUVELLE PUBLICATION ===== -->
+            <div class="job-card card shadow-lg p-4 position-relative mb-4">
+                <form asp-action="CreatePublication" method="post" enctype="multipart/form-data">
+                    <textarea name="NouvellePublication.Contenu" class="form-control mb-2" rows="3" placeholder="Quoi de neuf ?"></textarea>
+                    <input type="file" name="NouvellePublication.Image" class="form-control mb-2" />
+                    <button type="submit" class="btn btnGreen text-light px-4">Publier</button>
+                </form>
+            </div>
+
+            <!-- ===== LISTE DES PUBLICATIONS ===== -->
+            @foreach (var pub in Model.Publications)
+            {
+                <div class="job-card card shadow-lg p-4 position-relative mb-4">
+                    <!-- IMAGE UTILISATEUR FLOTTANTE EN HAUT À GAUCHE -->
+                    <img src="@pub.UtilisateurPhoto"
+                         class="offer-logo"
+                         alt="@pub.UtilisateurNom" />
+
+                    <div class="job-header mt-4">
+                        <div class="job-company">
+                            <strong class="company-name">@pub.UtilisateurNom</strong>
+                            <span class="job-location">• @pub.DatePublication.ToString("g")</span>
+                        </div>
+                    </div>
+
+                    <div class="job-description mt-2">
+                        <p>@pub.Contenu</p>
+
+                        <!-- Image de publication avec l'événement de clic -->
+                        <img src="@pub.Image" class="imageSize img-fluid rounded mt-2" alt="Publication image" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="@pub.Image" data-name="@pub.UtilisateurNom" />
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- ****** COLONNE DROITE (OPTIONNEL) ******* -->
+        <div class="col-lg-4">
+            <div class="job-card card shadow-lg p-4 sticky-company">
+                <h5 class="company-title">Infos utilisateur</h5>
+                <p class="company-name mb-2">Bienvenue dans votre fil</p>
+                <p class="company-description">Vous pouvez publier ici vos messages.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Fenêtre modale -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle" class="TextGreen"></h3> <!-- Titre modifié pour inclure le nom de l'utilisateur -->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <img id="modalImage" class="img-fluid" alt="Publication image" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* ===== LOGO FLOTTANT DANS LA CARD ===== */
+    .imageSize {
+        width: 10rem !important;
+    }
+
+    .modal-header {
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .TextGreen {
+        color: rgb(32, 124, 106);
+    }
+
+    .offer-logo {
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid #ddd;
+        background-color: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        z-index: 10;
+    }
+
+    .job-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 28px;
+        position: relative;
+    }
+
+    .job-header {
+        margin-bottom: 12px;
+    }
+
+    .job-company {
+        font-size: 1rem;
+        color: #666;
+    }
+
+    .company-name {
+        font-weight: 600;
+        color: rgb(32, 124, 106);
+    }
+
+    .job-location {
+        margin-left: 6px;
+    }
+
+    .job-description p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #444;
+        margin-bottom: 12px;
+    }
+
+    .job-description img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+    }
+
+    .btnGreen {
+        background-color: rgb(32, 124, 106);
+        border-radius: 30px;
+        font-weight: 600;
+    }
+
+    .sticky-company {
+        position: sticky;
+        top: 90px;
+    }
+
+    /* Styles pour l'image dans la modale */
+    #modalImage {
+        width: 100% !important; /* Prend toute la largeur de la fenêtre modale */
+        height: auto; /* Garde la proportion de l'image */
+        border-radius: 0; /* Retirer le bord arrondi pour l'image */
+    }
+</style>
+
+<script>
+       // Lorsque l'on clique sur l'image, on l'affiche dans la fenêtre modale
+    document.querySelectorAll('.job-description img').forEach(img => {
+        img.addEventListener('click', function () {
+            // Récupérer l'URL de l'image et le nom de l'utilisateur
+            var imageUrl = img.getAttribute('data-image');
+            var userName = img.getAttribute('data-name');
+
+            // Modifier l'élément img dans la fenêtre modale
+            document.getElementById('modalImage').src = imageUrl;
+
+            // Modifier le titre de la modale avec le nom de l'utilisateur
+            document.getElementById('modalTitle').textContent = "Image de " + userName;
+
+            // Ouvrir la fenêtre modale
+            var myModal = new bootstrap.Modal(document.getElementById('imageModal'));
+            myModal.show();
+
+            // Supprimer l'effet sombre lorsque la modale est fermée
+            document.getElementById('imageModal').addEventListener('hidden.bs.modal', function () {
+                var backdrop = document.querySelector('.modal-backdrop');
+                if (backdrop) {
+                    backdrop.remove();  // Supprimer le fond sombre
+                }
+            });
+        });
+    });
+
+</script>

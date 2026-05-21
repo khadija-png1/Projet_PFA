@@ -1,0 +1,99 @@
+﻿/* Container pleine hauteur */
+.compte-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Colonne image = 50% */
+    .compte-image
+{
+    flex: 1; /* prend 50% car il y a 2 colonnes flex:1 */
+    background-image: url('../images/imagecompte.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+/* Colonne formulaire = 50% */
+.compte-box {
+    flex: 1; /* prend aussi 50% */
+    background-color: #f0ecec;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* centrer verticalement */
+    height: 100%;
+    box-shadow: -4px 0 15px rgba(0,0,0,0.1);
+}
+.masthead-avatar {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+/* --- AJUSTEMENT UNIQUEMENT POUR LA PAGE REGISTER --- */
+.compte-box.register {
+    overflow-y: auto;
+    justify-content: flex-start;
+    padding-top: 3rem;
+}
+.link{
+    color:green;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #6c757d;
+    font-weight: bold;
+}
+
+    .divider::before,
+    .divider::after {
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid #6c757d; /* trait continu */
+        margin: 0 1rem; /* espace entre le texte et le trait */
+    }
+
+
+.role-card {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+    /* Hover pour effet léger */
+    .role-card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    /* Radio checked: mettre border + box shadow */
+    .role-card input[type="radio"]:checked {
+        accent-color: #0d6efd; /* couleur du rond sélectionné */
+    }
+
+    .role-card input[type="radio"] {
+        width: 20px;
+        height: 20px;
+    }
+
+/* Radio button */
+.radio-btn {
+    width: 20px;
+    height: 20px;
+    margin-left: 20px; /* <-- espace entre texte et rond */
+}

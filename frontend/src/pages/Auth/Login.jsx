@@ -1,64 +1,81 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../../style/Login.css"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth_image from "../../assets/image/image_auth.jpg"
+import { supabase } from "../../supabaseClient";
+
 export default function Login() {
+
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    if (error) {
+      alert(error.message);
+    } else {
+      navigate("/UserGui");
+    }
+  };
+
   return (
     <section className="container-login">
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-xl-10 col-lg-12 col-md-9">
-            <div className="card o-hidden border-0 shadow-lg my-5 ">
-              <div className="card-body p-0 ">
-                <div className="row">
-                  <div className="col-lg-6 d-none d-lg-block bg-login-image">
-                    <img src={auth_image} alt="Login Image" className='image ' />
-                  </div>
-                  <div className="col-lg-6">
-                    <div className="p-5">
-                      <div className="text-center">
-                        <h1 className="h4 text-gray-900 mb-4">Welcome Back!</h1>
-                      </div>
-                      <form className="user">
-                        <div className="form-group">
-                          <input type="email" className=" email form-control form-control-user"
-                            id="exampleInputEmail" aria-describedby="emailHelp"
-                            placeholder="Enter Email Address..." />
-                        </div>
-                        <div className="form-group">
-                          <input type="password" className="form-control form-control-user"
-                            id="exampleInputPassword" placeholder="Password" />
-                        </div>
-                        <div className="form-group">
-                          <div className="custom-control custom-checkbox small">
-                            <input type="checkbox" className="custom-control-input" id="customCheck" />
-                            <label className="custom-control-label" for="customCheck">Remember
-                              Me</label>
-                          </div>
-                        </div>
 
-                        <Link to="/UserGui" style={{ color: "#9c2121", marginLeft: "20px" }}>
-                          Login
-                        </Link>
-                        <hr />
-                      </form>
-                      <div className="text-center">
-                        <a className="small" href="forgot-password.html">Forgot Password?</a>
-                      </div>
-                      <div className="text-center">
-                        <Link to="/auth/register" style={{ color: "#9c2121", marginLeft: "20px" }}>
-                          Register
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      <div className="container">
+
+        <div className="card shadow-lg my-5">
+
+          <div className="row">
+
+            <div className="col-lg-6 d-none d-lg-block">
+              <img src={auth_image} className="image" />
+            </div>
+
+            <div className="col-lg-6">
+              <div className="p-5">
+
+                <h1>Welcome</h1>
+
+                <form onSubmit={handleLogin}>
+
+                  <input
+                    className="form-control mb-2"
+                    placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+
+                  <input
+                    type="password"
+                    className="form-control mb-3"
+                    placeholder="Password"
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+
+                  <button className="btn btn-success w-100">
+                    Login
+                  </button>
+
+                </form>
+
+                <Link to="/auth/register">Register</Link>
+
               </div>
             </div>
+
           </div>
+
         </div>
+
       </div>
+
     </section>
   )
 }
-

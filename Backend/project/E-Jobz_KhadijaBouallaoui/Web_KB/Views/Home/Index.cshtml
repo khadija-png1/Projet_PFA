@@ -1,0 +1,555 @@
+﻿@{
+    ViewData["Title"] = "Accueil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Masthead-->
+<header id="container" class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+
+        
+        <!-- Titre principal -->
+        <h1 id="colorlight"class="masthead-heading text-uppercase mb-3">E-JOBZ</h1>
+
+        <!-- Icon Divider -->
+        <div class="divider-custom divider-light mb-4">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+
+        <!-- Sous-titre -->
+        <p class="masthead-subheading font-weight-light mb-0">
+            Plateforme intelligente pour candidats et recruteurs
+        </p>
+
+        <!-- Bouton d'appel à l'action (optionnel) -->
+        <a href="#portfolio" class="btn btn-outline-light btn-lg mt-4">
+            Découvrir nos services
+        </a>
+    </div>
+</header>
+
+
+
+
+<section class="page-section bg-light">
+    <div class="container">
+        <h2 class="text-center text-uppercase text-secondary mb-4">
+            Pourquoi E-JOBZ ?
+        </h2>
+
+        <div class="row text-center">
+            <div class="col-md-4">
+                <i id="colorgreen"class="fas fa-briefcase fa-3x text-primary mb-3"></i>
+                <h4>Offres d’emploi</h4>
+                <p>Trouvez des offres adaptées à votre profil et à vos compétences.</p>
+            </div>
+
+            <div class="col-md-4">
+                <i id="colorgreen" class="fas fa-user-tie fa-3x text-primary mb-3"></i>
+                <h4>Recruteurs</h4>
+                <p>Publiez des offres et trouvez rapidement les meilleurs talents.</p>
+            </div>
+
+            <div class="col-md-4">
+                <i id="colorgreen" class="fas fa-search fa-3x text-primary mb-3"></i>
+                <h4>Recherche intelligente</h4>
+                <p>Filtrez par ville, métier, type de contrat.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Portfolio Section-->
+<!-- Portfolio Section-->
+<section class="page-section portfolio bg-light" id="portfolio">
+    <div class="container">
+        <!-- Portfolio Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Service de E-Jobz</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Portfolio Grid Items-->
+        <div class="row justify-content-center">
+            <!-- Portfolio Item 1-->
+            <div class="col-md-2 col-sm-4 mb-5">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    </div>
+                    <img class="img-fluid" src="../images/job.png" alt="..." />
+                </div>
+            </div>
+            <!-- Portfolio Item 2-->
+            <div class="col-md-2 col-sm-4 mb-5">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    </div>
+                    <img class="img-fluid" src="../images/publication.png" alt="..." />
+                </div>
+            </div>
+            <!-- Portfolio Item 3-->
+            <div class="col-md-2 col-sm-4 mb-5">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    </div>
+                    <img class="img-fluid" src="../images/employe.png" alt="..." />
+                </div>
+            </div>
+            <!-- Portfolio Item 4-->
+            <div class="col-md-2 col-sm-4 mb-5 mb-lg-0">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    </div>
+                    <img class="img-fluid" src="../images/profile.png" alt="..." />
+                </div>
+            </div>
+            <!-- Portfolio Item 5-->
+            <div class="col-md-2 col-sm-4 mb-5 mb-md-0">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal5">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    </div>
+                    <img class="img-fluid" src="../images/messagerie.png" alt="..." />
+                </div>
+            </div>
+            <!-- Portfolio Item 6-->
+            <div class="col-md-2 col-sm-4">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal6">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    </div>
+                    <img class="img-fluid" src="../images/notification.png" alt="..." />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Modals-->
+<!-- Service Modal 1 : Recherche d’emploi -->
+<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1"
+     aria-labelledby="portfolioModal1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Header -->
+            <div class="modal-header border-0">
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body text-center pb-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-9">
+
+                            <!-- Title -->
+                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">
+                                Recherche d’emploi intelligente
+                            </h2>
+
+                            <!-- Divider -->
+                            <div class="divider-custom my-4">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+
+                            <!-- Objectif -->
+                            <h4 class="text-secondary mb-3">Objectif du service</h4>
+                            <p class="mb-4">
+                                Le service de recherche d’emploi d’E-JOBZ a pour objectif
+                                d’aider les candidats à trouver rapidement des opportunités
+                                professionnelles correspondant à leur profil et à leurs compétences.
+                            </p>
+
+                            <!-- Fonctionnalités -->
+                            <h4 class="text-secondary mb-3">Fonctionnalités principales</h4>
+                            <ul class="list-unstyled mb-4">
+                                <li><i class="fas fa-check text-success me-2"></i>Recherche par métier ou mot-clé</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Filtrage par ville et localisation</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Sélection du type de contrat (CDI, CDD, Stage)</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Affichage des offres les plus récentes</li>
+                            </ul>
+
+                            <!-- Avantages -->
+                            <h4 class="text-secondary mb-3">Avantages pour le candidat</h4>
+                            <ul class="list-unstyled mb-4">
+                                <li><i class="fas fa-star text-warning me-2"></i>Gain de temps dans la recherche</li>
+                                <li><i class="fas fa-star text-warning me-2"></i>Accès centralisé aux offres d’emploi</li>
+                                <li><i class="fas fa-star text-warning me-2"></i>Expérience utilisateur simplifiée</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Service Modal 2 : Publication d’offres d’emploi -->
+<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Header -->
+            <div class="modal-header border-0">
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body text-center pb-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-9">
+
+                            <!-- Title -->
+                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">
+                                Publication d’offres d’emploi (Entreprise / Recruteur)
+                            </h2>
+
+                            <!-- Divider -->
+                            <div class="divider-custom my-4">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon"><i class="fas fa-briefcase"></i></div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+
+                            <!-- Objectif -->
+                            <h4 class="text-secondary mb-3">Objectif du service</h4>
+                            <p class="mb-4">
+                                Ce service permet aux entreprises et recruteurs de publier des offres
+                                d’emploi, de définir les critères recherchés et de gérer les candidatures
+                                reçues de manière efficace et centralisée.
+                            </p>
+
+                            <h4 class="text-secondary mb-3">Fonctionnalités principales</h4>
+                            <ul class="list-unstyled mb-4">
+                                <li><i class="fas fa-check text-success me-2"></i>Création et publication d’offres d’emploi</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Définition des critères du poste (compétences, expérience, localisation)</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Gestion et suivi des candidatures reçues</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Possibilité de modifier ou archiver les offres</li>
+                            </ul>
+                            <!-- Avantages -->
+                            <h4 class="text-secondary mb-3">Avantages pour l’entreprise</h4>
+                            <ul class="list-unstyled mb-4">
+                                <li><i class="fas fa-star text-warning me-2"></i>Gain de temps dans le recrutement</li>
+                                <li><i class="fas fa-star text-warning me-2"></i>Centralisation des candidatures</li>
+                                <li><i class="fas fa-star text-warning me-2"></i>Meilleure visibilité des offres</li>
+                            </ul>
+
+                   
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Service Modal 3 : Candidature en ligne -->
+<div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModal3" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Header -->
+            <div class="modal-header border-0">
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body text-center pb-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-9">
+
+                            <!-- Title -->
+                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">
+                                Candidature en ligne
+                            </h2>
+
+                            <!-- Divider -->
+                            <div class="divider-custom my-4">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon"><i class="fas fa-paper-plane"></i></div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+
+                            <!-- Objectif -->
+                            <h4 class="text-secondary mb-3">Objectif du service</h4>
+                            <p class="mb-4">
+                                Ce service permet aux candidats de postuler directement aux offres d’emploi
+                                via la plateforme, et de suivre l’état de leurs candidatures en temps réel.
+                            </p>
+
+                            <!-- Fonctionnalités -->
+                            <h4 class="text-secondary mb-3">Fonctionnalités principales</h4>
+                            <ul class="list-unstyled mb-4 t">
+                                <li><i class="fas fa-check text-success me-2"></i>Postuler en quelques clics</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Suivi de l’état des candidatures</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Historique des candidatures envoyées</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Notification des mises à jour de candidature</li>
+                            </ul>
+
+                            <!-- Avantages -->
+                            <h4 class="text-secondary mb-3">Avantages pour le candidat</h4>
+                            <ul class="list-unstyled mb-4">
+                                <li><i class="fas fa-star text-warning me-2"></i>Gain de temps et simplification des démarches</li>
+                                <li><i class="fas fa-star text-warning me-2"></i>Suivi centralisé des candidatures</li>
+                                <li><i class="fas fa-star text-warning me-2"></i>Notification rapide des réponses</li>
+                            </ul>
+
+                          
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Service Modal 4 : Publication de profils par les candidats -->
+<div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModal4" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Header -->
+            <div class="modal-header border-0">
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body text-center pb-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-9">
+
+                            <!-- Title -->
+                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">
+                                Publication de profils par les candidats
+                            </h2>
+
+                            <!-- Divider -->
+                            <div class="divider-custom my-4">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon"><i class="fas fa-user-circle"></i></div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+
+                            <!-- Objectif -->
+                            <h4 class="text-secondary mb-3">Objectif du service</h4>
+                            <p class="mb-4">
+                                Ce service permet aux candidats de publier leur profil, de mettre en avant leurs compétences
+                                et expériences, et d’augmenter leurs chances d’être contactés par les recruteurs.
+                            </p>
+
+                            <!-- Fonctionnalités -->
+                            <h4 class="text-secondary mb-3">Fonctionnalités principales</h4>
+                            <ul class="list-unstyled mb-4 ">
+                                <li><i class="fas fa-check text-success me-2"></i>Création et mise à jour du profil candidat</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Ajout des compétences, expériences et diplômes</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Partage du profil avec les recruteurs</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Gestion de la visibilité du profil</li>
+                            </ul>
+
+                            <!-- Avantages -->
+                            <h4 class="text-secondary mb-3">Avantages pour le candidat</h4>
+                            <ul class="list-unstyled mb-4 ">
+                                <li><i class="fas fa-star text-warning me-2"></i>Visibilité accrue auprès des recruteurs</li>
+                                <li><i class="fas fa-star text-warning me-2"></i>Suivi facile de son profil et mise à jour rapide</li>
+                                <li><i class="fas fa-star text-warning me-2"></i>Augmentation des chances de trouver un emploi</li>
+                            </ul>
+
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Service Modal 5 : Messagerie interne -->
+<div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" aria-labelledby="portfolioModal5" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Header -->
+            <div class="modal-header border-0">
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body text-center pb-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-9">
+
+                            <!-- Title -->
+                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">
+                                Messagerie interne
+                            </h2>
+
+                            <!-- Divider -->
+                            <div class="divider-custom my-4">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon"><i class="fas fa-envelope"></i></div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+
+                            <!-- Objectif -->
+                            <h4 class="text-secondary mb-3">Objectif du service</h4>
+                            <p class="mb-4">
+                                La messagerie interne permet aux candidats et aux entreprises de communiquer
+                                directement sur la plateforme, facilitant l’échange d’informations et la coordination.
+                            </p>
+
+                            <!-- Fonctionnalités -->
+                            <h4 class="text-secondary mb-3">Fonctionnalités principales</h4>
+                            <ul class="list-unstyled mb-4 ">
+                                <li><i class="fas fa-check text-success me-2"></i>Envoi et réception de messages instantanés</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Historique des conversations</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Notifications pour les nouveaux messages</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Gestion des messages non lus</li>
+                            </ul>
+
+                            <!-- Avantages -->
+                            <h4 class="text-secondary mb-3">Avantages pour les utilisateurs</h4>
+                            <ul class="list-unstyled mb-4 ">
+                                <li><i class="fas fa-star text-warning me-2"></i>Communication rapide et centralisée</li>
+                                <li><i class="fas fa-star text-warning me-2"></i>Suivi facile des échanges</li>
+                                <li><i class="fas fa-star text-warning me-2"></i>Plus de clarté dans les échanges candidats / entreprises</li>
+                            </ul>
+
+                    
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Service Modal 6 : Notifications et alertes -->
+<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" aria-labelledby="portfolioModal6" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Header -->
+            <div class="modal-header border-0">
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body text-center pb-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-9">
+
+                            <!-- Title -->
+                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">
+                                Notifications et alertes
+                            </h2>
+
+                            <!-- Divider -->
+                            <div class="divider-custom my-4">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon"><i class="fas fa-bell"></i></div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+
+                            <!-- Objectif -->
+                            <h4 class="text-secondary mb-3">Objectif du service</h4>
+                            <p class="mb-4">
+                                Ce service informe les utilisateurs des nouvelles offres, messages ou actions importantes
+                                sur la plateforme, afin de ne rien manquer et de réagir rapidement.
+                            </p>
+
+                            <!-- Fonctionnalités -->
+                            <h4 class="text-secondary mb-3">Fonctionnalités principales</h4>
+                            <ul class="list-unstyled mb-4 t">
+                                <li><i class="fas fa-check text-success me-2"></i>Alertes pour nouvelles offres et candidatures</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Notifications pour messages reçus</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Rappels pour actions importantes</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Historique des notifications</li>
+                            </ul>
+
+                            <!-- Avantages -->
+                            <h4 class="text-secondary mb-3">Avantages pour l’utilisateur</h4>
+                            <ul class="list-unstyled mb-4">
+                                <li><i class="fas fa-star text-warning me-2"></i>Rester informé en temps réel</li>
+                                <li><i class="fas fa-star text-warning me-2"></i>Ne manquer aucune opportunité</li>
+                                <li><i class="fas fa-star text-warning me-2"></i>Organisation et suivi simplifiés</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- About Section-->
+<section id="container" class="page-section bg-primary text-white mb-0" >
+    <div class="container">
+        <!-- About Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-white">À propos d'E-JOBZ</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light mb-5">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+
+        <!-- About Section Content-->
+        <div  class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <p class="lead">
+                    E-JOBZ est une plateforme innovante qui connecte les candidats et les recruteurs.
+                    Elle permet aux candidats de publier leur profil, postuler aux offres rapidement
+                    et suivre leurs candidatures en temps réel.
+                </p>
+                <p class="lead">
+                    Les recruteurs peuvent publier des offres d’emploi, gérer les candidatures et
+                    recevoir des notifications importantes, le tout de manière simple et centralisée.
+                </p>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img class="img-fluid rounded" src="../images/about.png" alt="Illustration E-JOBZ" />
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    /* Cible directement le container */
+    #container {
+        background-color: rgb(32, 124, 106) !important; /* couleur verte */
+        border-radius: 8px; /* optionnel : arrondir les coins */
+    }
+
+    #colorgreen{
+        color: rgb(32, 124, 106) !important; /* couleur verte */
+    }
+
+    #colorlight{
+    color: #f0ecec !important;
+    }
+</style>

@@ -1,25 +1,25 @@
 #!/bin/bash
 
-echo "================================="
-echo "        ZAP DAST SCAN"
-echo "================================="
+echo "=== ZAP SCAN ==="
 
-TARGET_URL="http://testasp.vulnweb.com"
-RESULT_DIR="/mnt/d/Projet_PFA/Scripts/DevSecOps/DAST/zap-results"
+TARGET_URL=$1
+RESULT_DIR="results"
 
 mkdir -p "$RESULT_DIR"
 
-ZAP="/snap/zaproxy/current/zap.sh"
+ZAP_DIR="/c/Program Files/ZAP/Zed Attack Proxy"
 
-echo "[*] Target: $TARGET_URL"
-echo "[*] Output: $RESULT_DIR"
+if [ ! -f "$ZAP_DIR/zap.bat" ]; then
+  echo "❌ ZAP introuvable dans $ZAP_DIR"
+  exit 1
+fi
 
-$ZAP -cmd \
+# 🔥 se placer dans le dossier ZAP
+cd "$ZAP_DIR" || exit 1
+
+./zap.bat -cmd \
   -quickurl "$TARGET_URL" \
   -quickprogress \
-  -quickout "$RESULT_DIR/report.xml"
+  -quickout "/d/Projet_PFA/Scripts/DevSecOps/results/zap-report.html"
 
-echo "================================="
-echo "✔ SCAN TERMINÉ"
-echo "✔ XML : $RESULT_DIR/report.xml"
-echo "================================="
+echo "ZAP DONE"

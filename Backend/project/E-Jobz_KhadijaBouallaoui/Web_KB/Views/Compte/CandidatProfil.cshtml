@@ -1,0 +1,306 @@
+﻿@model CandidatProfilViewModel
+@{
+    ViewData["Title"] = "Profil";
+    Layout = "~/Views/Shared/_NavbarLayout.cshtml";
+}
+
+<div class="container emp-profile mt-5">
+    <div id="cardprofile" class="card shadow-lg p-4">
+        <form asp-action="CandidatProfil" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+
+            <!-- PHOTO ET NOM -->
+            <div class="row mb-4 align-items-center">
+                <div class="col-md-2 text-center">
+                    <img id="profileImage"
+                         src="@(string.IsNullOrWhiteSpace(Model?.PhotoProfil) ? Url.Content("~/images/profile.png") : Model.PhotoProfil)"
+                         class="img-fluid rounded-circle border border-3 border-success"
+                         style="width:120px; height:120px; cursor:pointer; object-fit:cover;" />
+                    <input type="file" id="photoUpload" name="PhotoUpload" class="d-none" accept="image/*" />
+                </div>
+                <div class="col-md-6">
+                    <h3 class="mb-1">@Model.Prenom @Model.Nom</h3>
+                    <h5 class="text-muted">@Model.TitreProfil</h5>
+                </div>
+            </div>
+
+            <hr />
+
+            <!-- INFOS -->
+            <div class="row mb-4">
+                <div class="col-md-6 mb-2"><label>Nom</label><input asp-for="Nom" class="form-control" readonly /></div>
+                <div class="col-md-6 mb-2"><label>Prénom</label><input asp-for="Prenom" class="form-control" readonly /></div>
+                <div class="col-md-6 mb-2"><label>Email</label><input asp-for="Email" class="form-control" readonly /></div>
+                <div class="col-md-6 mb-2"><label asp-for="TitreProfil">Titre Profil</label><input asp-for="TitreProfil" class="form-control" /></div>
+                <div class="col-md-12"><label asp-for="Bio">Bio</label><input asp-for="Bio" class="form-control" /></div>
+            </div>
+
+            <hr />
+
+            <!-- COMPETENCES -->
+            <section class="mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h4>Compétences</h4>
+                    <div>
+                        <button type="button" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#addCompetenceModal">➕ Ajouter</button>
+                        <a asp-action="EditCompetences" asp-controller="Compte" asp-route-candidatId="@Model.Id" class="btn btn-sm btn-outline-primary">✏️ Éditer</a>
+                    </div>
+                </div>
+
+                <ul id="competenceList" class="list-group list-group-flush">
+                    @for (int i = 0; i < Model.Competence.Count && i < 3; i++)
+                    {
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <input type="hidden" name="Competence[@i].Id" value="@Model.Competence[i].Id" />
+                            <input type="text" name="Competence[@i].Nom" value="@Model.Competence[i].Nom" class="form-control me-2" readonly />
+                            <input type="number" name="Competence[@i].Niveau" value="@Model.Competence[i].Niveau" min="1" max="5" class="form-control w-25" readonly />
+                        </li>
+                    }
+                </ul>
+            </section>
+
+            <!-- FORMATIONS -->
+            <section class="mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h4>Formations</h4>
+                    <div>
+                        <button type="button" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#addFormationModal">➕ Ajouter</button>
+                        <a asp-action="EditFormations" asp-controller="Compte" asp-route-candidatId="@Model.Id" class="btn btn-sm btn-outline-primary">✏️ Éditer</a>
+                    </div>
+                </div>
+
+                <ul id="formationList" class="list-group list-group-flush">
+                    @for (int i = 0; i < Model.Formation.Count && i < 3; i++)
+                    {
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <input type="hidden" name="Formation[@i].Id" value="@Model.Formation[i].Id" />
+                            <input type="text" name="Formation[@i].Diplome" value="@Model.Formation[i].Diplome" class="form-control me-2" readonly />
+                            <input type="text" name="Formation[@i].Ecole" value="@Model.Formation[i].Ecole" class="form-control w-25" readonly />
+                            <input type="date" name="Formation[@i].DateDebut" value="@(Model.Formation[i].DateDebut.ToString("yyyy-MM-dd"))" class="form-control w-25" readonly />
+                            <input type="date" name="Formation[@i].DateFin" value="@(Model.Formation[i].DateFin.ToString("yyyy-MM-dd"))" class="form-control w-25" readonly />
+                        </li>
+                    }
+                </ul>
+            </section>
+
+            <div class="containBtn">
+                <button type="submit" class="btn btn-su ">
+                    <h5 class="text-color">Enregister</h5>
+                    </button>
+                <button type="submit" class="btn btn-outline-primary  asp-controller="Compte" asp-action="Logout">
+                    <h5 class="text-color">Se déconnecter</h5>
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<!-- MODAL AJOUT COMPETENCE -->
+<div class="modal fade" id="addCompetenceModal" tabindex="-1" aria-labelledby="addCompetenceLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addCompetenceLabel">Ajouter une compétence</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label">Nom</label>
+                    <input type="text" id="newCompetenceNom" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Niveau</label>
+                    <input type="number" id="newCompetenceNiveau" min="1" max="5" class="form-control" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="addCompetenceBtn" class="btn btn-success w-100">Ajouter</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL AJOUT FORMATION -->
+<div class="modal fade" id="addFormationModal" tabindex="-1" aria-labelledby="addFormationLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addFormationLabel">Ajouter une formation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3"><label>Diplome</label><input type="text" id="newFormationDiplome" class="form-control"required /></div>
+                <div class="mb-3"><label>Ecole</label><input type="text" id="newFormationEcole" class="form-control" required /></div>
+                <div class="mb-3"><label>Date Debut</label><input type="date" id="newFormationDateDebut" class="form-control" required /></div>
+                <div class="mb-3"><label>Date Fin</label><input type="date" id="newFormationDateFin" class="form-control" required /></div>
+                <div class="mb-3"><label>Description</label><input type="text" id="newFormationDescription" class="form-control" required /></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="addFormationBtn" class="btn btn-success w-100">Ajouter</button>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+
+    <style >
+    /* Profil global */
+    #cardprofile {
+        background-color: #fff;
+        border-radius: 1rem;
+        transition: all 0.3s;
+    }
+
+    #cardprofile:hover {
+        box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+
+    /* Inputs */
+    .form-control {
+        border-radius: 12px;
+        border: 1px solid #ced4da;
+        padding: 10px 14px;
+        transition: all 0.2s;
+    }
+
+        .form-control:focus {
+            border-color: rgb(32, 124, 106);
+            box-shadow: 0 0 8px rgba(32,124,106,0.3);
+        }
+
+    /* Compétences et Formations */
+    .list-group-item {
+        background-color: #f8f9fa;
+        transition: all 0.2s;
+    }
+
+        .list-group-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+        }
+
+    /* Boutons */
+    .btn-success {
+        background-color: rgb(32,124,106);
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.2s;
+    }
+
+        .btn-success:hover {
+            background-color: rgb(32,150,106);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+    .btn-outline-success {
+        border-radius: 30px;
+        font-weight: 500;
+    }
+
+        .btn-outline-success:hover {
+            background-color: rgb(32,124,106);
+            color: #fff;
+        }
+
+    .btn-outline-primary {
+        border-radius: 30px;
+        font-weight: 500;
+    }
+
+        .btn-outline-primary:hover {
+            background-color: #0d6efd;
+            color: #fff;
+        }
+
+    /* Image profile */
+    #profileImage {
+        transition: all 0.3s;
+    }
+
+        #profileImage:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Profile image preview
+        const profileImg = document.getElementById("profileImage");
+        const photoUpload = document.getElementById("photoUpload");
+        profileImg.addEventListener("click", () => photoUpload.click());
+        photoUpload.addEventListener("change", function() {
+            const file = this.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = e => profileImg.src = e.target.result;
+            reader.readAsDataURL(file);
+        });
+
+        // Ajouter compétence depuis modal
+        const competenceList = document.getElementById("competenceList");
+        document.getElementById("addCompetenceBtn").addEventListener("click", function() {
+            const nom = document.getElementById("newCompetenceNom").value.trim();
+            const niveau = document.getElementById("newCompetenceNiveau").value || 1;
+            if(!nom) return;
+
+            const index = competenceList.children.length;
+            const li = document.createElement("li");
+            li.className = "list-group-item d-flex justify-content-between";
+               li.innerHTML = `
+        <input type="hidden" name="Competence[${index}].Id" value="0" />
+        <input type="text" name="Competence[${index}].Nom" value="${nom}" class="form-control me-2" />
+        <input type="number" name="Competence[${index}].Niveau" value="${niveau}" min="1" max="5" class="form-control w-25" />
+    `;
+
+            competenceList.appendChild(li);
+
+            // clear inputs
+            document.getElementById("newCompetenceNom").value = "";
+            document.getElementById("newCompetenceNiveau").value = "";
+
+            // close modal
+            bootstrap.Modal.getInstance(document.getElementById("addCompetenceModal")).hide();
+        });
+            // Ajouter formation depuis modal
+    const formationList = document.getElementById("formationList");
+    document.getElementById("addFormationBtn").addEventListener("click", function() {
+        const diplome = document.getElementById("newFormationDiplome").value.trim();
+        const ecole = document.getElementById("newFormationEcole").value.trim();
+        const dateDebut = document.getElementById("newFormationDateDebut").value;
+        const dateFin = document.getElementById("newFormationDateFin").value;
+        const description = document.getElementById("newFormationDescription").value.trim();
+
+        if (!diplome) return;
+
+        const index = formationList.children.length;
+        const li = document.createElement("li");
+        li.className = "list-group-item d-flex justify-content-between";
+        li.innerHTML = `
+            <input type="hidden" name="Formation[${index}].Id" value="0" />
+            <input type="text" name="Formation[${index}].Diplome" value="${diplome}" class="form-control me-2" />
+            <input type="text" name="Formation[${index}].Ecole" value="${ecole}" class="form-control me-2" />
+            <input type="date" name="Formation[${index}].DateDebut" value="${dateDebut}" class="form-control me-2" />
+            <input type="date" name="Formation[${index}].DateFin" value="${dateFin}" class="form-control me-2" />
+            <input type="date" name="Formation[${index}].Description" value="${description}" class="form-control me-2" />
+
+        `;
+
+        formationList.appendChild(li);
+
+        // clear inputs
+        document.getElementById("newFormationDiplome").value = "";
+        document.getElementById("newFormationEcole").value = "";
+        document.getElementById("newFormationDateDebut").value = "";
+        document.getElementById("newFormationDateFin").value = "";
+        document.getElementById("newFormationDescription").value = "";
+
+
+        bootstrap.Modal.getInstance(document.getElementById("addFormationModal")).hide();
+    });
+
+    });
+</script>
+
+

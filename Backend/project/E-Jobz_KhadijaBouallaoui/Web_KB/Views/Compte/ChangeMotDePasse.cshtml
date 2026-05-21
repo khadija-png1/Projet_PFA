@@ -1,0 +1,54 @@
+﻿@using Web_KB.Models;
+@model ChangeMotDePasseViewModel;
+
+@{
+        ViewData["Title"] = "ChangeMotDePasse";
+    Layout = "~/Views/Shared/_CompteLayout.cshtml";
+}
+
+
+<div class="compte-container">
+    <div class="compte-image" aria-hidden="true"></div>
+    <div class="compte-box">
+        <img class="masthead-avatar mb-5" src="../images/logo.png" alt="..." />
+
+        <h2 class="text mb-5">Changer le Mot De Passe</h2>
+        <form asp-action="ChangeMotDePasse" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="AncienMotDePasse" class="form-label"></label>
+                <input asp-for="AncienMotDePasse" class="form-control" />
+                <span asp-validation-for="AncienMotDePasse" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="NouveauMotDePasse" class="form-label"></label>
+                <input asp-for="NouveauMotDePasse" class="form-control" />
+                <span asp-validation-for="NouveauMotDePasse" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="ComfirmeNouveauMotDePasse" class="form-label"></label>
+                <input asp-for="ComfirmeNouveauMotDePasse" class="form-control" />
+                <span asp-validation-for="ComfirmeNouveauMotDePasse" class="text-danger"></span>
+            </div>
+            <input id ="colorgreen" type="submit" value="ChangeMotDePasse" class="btn btn-success w-100 p-2" />
+
+            <div class="text-center">
+                <a asp-controller="Compte" asp-action="VerifyEmail" class="text-decoration-none mt-3">Retour au home</a>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+<style>
+    #colorgreen {
+        background-color: rgb(32, 124, 106) !important; /* couleur verte */
+    }
+
+</style>

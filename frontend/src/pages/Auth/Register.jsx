@@ -1,65 +1,94 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../../style/Register.css"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth_image from "../../assets/image/image_auth.jpg"
+import { supabase } from "../../supabaseClient";
 
 export default function Register() {
+
+  const navigate = useNavigate();
+
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirm: ""
+  });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+    if (form.password !== form.confirm) {
+      alert("Passwords not match");
+      return;
+    }
+
+    const { error } = await supabase.auth.signUp({
+      email: form.email,
+      password: form.password,
+
+      options: {
+        data: {
+          nom: form.firstName,
+          prenom: form.lastName,
+        }
+      }
+
+    });
+
+    if (error) {
+      alert(error.message);
+    } else {
+      alert("Account created!");
+      navigate("/auth/login");
+    }
+  };
+
   return (
     <section className="container-login">
       <div className="container">
 
-        <div className="card o-hidden border-0 shadow-lg my-5 form_design">
+        <div className="card shadow-lg my-5 form_design">
           <div className="card-body p-0">
             <div className="row">
-              <div className="col-lg-5 d-none d-lg-block bg-register-image">
-                <img src={auth_image} alt="Register Image" className='image' />
+
+              <div className="col-lg-5 d-none d-lg-block">
+                <img src={auth_image} alt="" className='image' />
               </div>
+
               <div className="col-lg-7">
-                <div className="p-5 ">
-                  <div className="text-center">
-                    <h1 className="h4 text-gray-900 mb-4">Create an Account!</h1>
-                  </div>
-                  <form className="user">
-                    <div className="form-group row">
-                      <div className="col-sm-6 mb-3 mb-sm-0">
-                        <input type="text" className="form-control form-control-user" id="exampleFirstName"
-                          placeholder="First Name" />
-                      </div>
-                      <div className="col-sm-6">
-                        <input type="text" className="form-control form-control-user" id="exampleLastName"
-                          placeholder="Last Name" />
-                      </div>
-                    </div>
-                    <div className="form-group">
-                      <input type="email" className="form-control form-control-user" id="exampleInputEmail"
-                        placeholder="Email Address" />
-                    </div>
-                    <div className="form-group row">
-                      <div className="col-sm-6 mb-3 mb-sm-0">
-                        <input type="password" className="form-control form-control-user"
-                          id="exampleInputPassword" placeholder="Password" />
-                      </div>
-                      <div className="col-sm-6">
-                        <input type="password" className="form-control form-control-user"
-                          id="exampleRepeatPassword" placeholder="Repeat Password" />
-                      </div>
-                    </div>
-                    <a href="login.html" className="btn  btn-user btn-block">
-                      Register Account
-                    </a>
+                <div className="p-5">
+
+                  <h1 className="h4 text-center mb-4">Create Account</h1>
+
+                  <form onSubmit={handleRegister}>
+
+                    <input name="firstName" onChange={handleChange} className="form-control mb-2" placeholder="First Name" />
+
+                    <input name="lastName" onChange={handleChange} className="form-control mb-2" placeholder="Last Name" />
+
+                    <input name="email" onChange={handleChange} className="form-control mb-2" placeholder="Email" />
+
+                    <input name="password" type="password" onChange={handleChange} className="form-control mb-2" placeholder="Password" />
+
+                    <input name="confirm" type="password" onChange={handleChange} className="form-control mb-3" placeholder="Confirm Password" />
+
+                    <button className="btn btn-primary w-100">
+                      Register
+                    </button>
 
                   </form>
-                  <hr />
-                  <div className="text-center">
-                    <a className="small" href="forgot-password.html">Forgot Password?</a>
-                  </div>
-                  <div className="text-center">
-                    <Link to="/auth/login" style={{ color: "#ce1010", marginLeft: "20px" }}>
-                      Already have an account? Login!
-                    </Link>
-                  </div>
+
+                  <Link to="/auth/login">Already have account?</Link>
+
                 </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -68,4 +97,3 @@ export default function Register() {
     </section>
   )
 }
-

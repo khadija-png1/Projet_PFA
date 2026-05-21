@@ -1,0 +1,178 @@
+﻿@model List<Web_KB.Models.CandidatureViewModelCandidat>
+
+@{
+    ViewData["Title"] = "Candidatures";
+    Layout = "~/Views/Shared/_NavbarLayout.cshtml";
+}
+
+<div class="container mt-4">
+
+    <!-- ===== TEMP DATA MESSAGES ===== -->
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Success"]
+        </div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["Error"]
+        </div>
+    }
+
+    <div class="row g-4">
+        <div class="col-lg-8">
+
+            @if (!Model.Any())
+            {
+                <div class="alert alert-warning">
+                    Aucune candidature trouvée.
+                </div>
+            }
+            else
+            {
+                @foreach (var item in Model)
+                {
+                    <div class="job-card card shadow-lg p-4 position-relative mb-4">
+
+                        <!-- HEADER -->
+                        <div class="job-header mt-2">
+                            <h2 class="job-title">@item.offre?.Titre</h2>
+                            <div class="job-company">
+                                <span class="company-name">
+                                    @item.offre?.Entreprise?.Nom
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- INFOS -->
+                        <div class="job-infos">
+                            <span class="job-badge">@item.Statut</span>
+                            <span class="job-badge">
+                                📅 @item.DateSoumission.ToShortDateString()
+                            </span>
+                        </div>
+
+                        <hr />
+
+                     
+                            <div class="job-description">
+                                @foreach (var paragraph in item.offre.Description
+                                                    .Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries))
+                                {
+                                    <p>@paragraph</p>
+                                }
+                            </div>
+                        
+
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</div>
+
+
+<style>
+    /* ===== LOGO FLOTTANT DANS LA CARD OFFRE ===== */
+    .offer-logo {
+        position: absolute; /* par rapport à la card */
+        top: -20px;
+        left: -20px;
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        border-radius: 12px;
+        border: 2px solid #ddd;
+        background-color: #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        z-index: 10;
+    }
+
+    .job-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 28px;
+        position: relative; /* important pour que le logo absolute fonctionne */
+    }
+
+    .job-header {
+        margin-bottom: 12px;
+    }
+
+    .job-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #2d2d2d;
+    }
+
+    .job-company {
+        font-size: 1rem;
+        color: #666;
+    }
+
+    .company-name {
+        font-weight: 600;
+        color: rgb(32, 124, 106);
+    }
+
+    .job-location {
+        margin-left: 6px;
+    }
+
+    .job-infos {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 16px 0;
+    }
+
+    .job-badge {
+        background-color: #f0f4f3;
+        color: rgb(32, 124, 106);
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .job-description p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #444;
+        margin-bottom: 12px;
+    }
+
+    .job-action {
+        margin-top: 25px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .btnGreen {
+        background-color: rgb(32, 124, 106);
+        border-radius: 30px;
+        font-weight: 600;
+    }
+
+    /* ===== CARD ENTREPRISE DROITE ===== */
+    .company-title {
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #2d2d2d;
+    }
+
+    .company-description p {
+        font-size: 0.9rem;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 10px;
+    }
+
+    .sticky-company {
+        position: sticky;
+        top: 90px;
+    }
+</style>

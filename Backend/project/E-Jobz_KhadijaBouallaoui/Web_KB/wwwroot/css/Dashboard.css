@@ -1,0 +1,22 @@
+﻿.masthead-avatar.me-2 {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.offer-card {
+    border-radius: 12px!important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease!important;
+    margin:5rem!important;
+}
+
+    .offer-card:hover {
+        transform: translateY(-4px)!important;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12)!important;
+    }
+
+.card-text {
+    overflow: hidden!important;
+}
+.navbar {
+    background-color: rgb(44 62 80)!important;
+}

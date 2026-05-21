@@ -1,0 +1,46 @@
+﻿@model Web_KB.Models.ConfirmerCandidatureViewModel
+
+@{
+    ViewData["Title"] = "Confirmer Candidature";
+    Layout = "~/Views/Shared/_NavbarLayout.cshtml";
+}
+
+
+
+<div class="container mt-5">
+    <div class="job-card shadow-lg p-4">
+        <h3 class="mb-3">Confirmer votre candidature</h3>
+
+        <form asp-controller="Candidature" asp-action="CandidatureCandidat" method="post">
+            <input type="hidden" asp-for="OffreEmploiId" />
+
+            <div class="mb-2">
+                <strong>Titre :</strong> @Model.TitreOffre
+            </div>
+            <div class="mb-3">
+                <strong>Statut :</strong> @Model.StatutOffre
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="MessageMotivation">Message de motivation</label>
+                <textarea asp-for="MessageMotivation" class="form-control" rows="5"></textarea>
+            </div>
+
+            <button type="submit" class="btn btnGreen">Envoyer ma candidature</button>
+        </form>
+    </div>
+</div>
+
+<style>
+.job-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px;
+}
+.btnGreen {
+    background-color: rgb(32, 124, 106);
+    color: #fff;
+    border-radius: 30px;
+    font-weight: 600;
+}
+</style>

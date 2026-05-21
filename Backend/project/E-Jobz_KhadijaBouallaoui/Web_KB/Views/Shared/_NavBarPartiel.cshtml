@@ -1,0 +1,46 @@
+﻿<ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+        <a class="nav-link " asp-controller="Home" asp-action="Index">
+            <i class="fas fa-home me-1"></i> Home
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Offre" asp-action="OffresEmploisAll">
+            <i class="fas fa-briefcase me-1"></i> Offres
+        </a>
+    </li>
+    <li class="nav-item ">
+        <a class="nav-link " asp-controller="Publication" asp-action="AfficherPublication">
+            <i class="fas fa-upload me-1"></i> Publication
+        </a>
+    </li>
+    <li class="nav-item ">
+        <a class="nav-link " asp-controller="Candidature" asp-action="CandidatureCandidat">
+            <i class="fas fa-clipboard-list me-1"></i> Candidatures
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link " asp-controller="Compte" asp-action="CandidatProfil">
+            <i class="fas fa-user me-1"></i> Profile
+        </a>
+    </li>
+</ul>
+
+<style>
+    /* Tous les liens du navbar */
+    #mainNav .nav-link {
+        color: rgb(32 124 106) !important; /* couleur normale */
+        transition: all 0.2s ease-in-out;
+    }
+
+        /* Hover des liens */
+        #mainNav .nav-link:hover {
+            color: white !important; /* couleur dorée */
+            transform: translateY(-2px);
+        }
+
+        /* Icônes héritent de la couleur du lien */
+        #mainNav .nav-link i {
+            color: inherit;
+        }
+</style>

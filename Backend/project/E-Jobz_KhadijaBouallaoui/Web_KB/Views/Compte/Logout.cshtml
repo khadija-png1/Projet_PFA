@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Déconnexion";
+    Layout = "~/Views/Shared/_CompteLayout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg rounded-4 border-0">
+                <div class="card-header text-center bg-success text-white rounded-top-4 py-3">
+                    <h4><i class="fas fa-sign-out-alt"></i> Déconnexion</h4>
+                </div>
+                <div class="card-body text-center p-4">
+                    <p class="mb-1">Vous êtes connecté en tant que :</p>
+                    <h5 class="fw-bold text-success">@ViewBag.UserName</h5>
+                    <small class="text-muted">@ViewBag.Email</small>
+
+                    <p class="mt-4 mb-4">Voulez-vous vous déconnecter ?</p>
+
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-success px-4 py-2 fw-bold">
+                            <i class="fas fa-home"></i> Annuler
+                        </a>
+
+                        <form asp-action="LogoutPost" method="post">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-success px-4 py-2 fw-bold">
+                                <i class="fas fa-sign-out-alt"></i> Se déconnecter
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: all 0.3s;
+    }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+    .btn-success, .btn-outline-success {
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.2s;
+    }
+
+        .btn-success:hover {
+            background-color: rgb(32,150,106);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+    .btn-outline-success {
+        border: 2px solid rgb(32,124,106);
+        color: rgb(32,124,106);
+    }
+
+        .btn-outline-success:hover {
+            background-color: rgb(32,124,106);
+            color: #fff;
+        }
+
+    .card-header {
+        font-size: 1.25rem;
+    }
+</style>

@@ -1,0 +1,24 @@
+﻿@model CandidatProfilViewModel
+@{
+    ViewData["Title"] = "Edite Competences";
+    Layout = "~/Views/Shared/_NavbarLayout.cshtml";
+}
+<h3>Éditer les compétences</h3>
+
+<form asp-action="EditCompetences" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <ul class="list-group mb-3">
+        @for (int i = 0; i < Model.Competence.Count; i++)
+        {
+            <li class="list-group-item d-flex justify-content-between">
+                <input type="hidden" name="Competence[@i].Id" value="@Model.Competence[i].Id" />
+                <input type="text" name="Competence[@i].Nom" value="@Model.Competence[i].Nom" class="form-control me-2" />
+                <input type="number" name="Competence[@i].Niveau" value="@Model.Competence[i].Niveau" min="1" max="5" class="form-control w-25" />
+            </li>
+        }
+    </ul>
+
+    <button type="submit" class="btn btn-success">Enregistrer les compétences</button>
+</form>
+

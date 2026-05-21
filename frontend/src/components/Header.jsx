@@ -1,114 +1,159 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "../style/header.css"
+import { supabase } from "../supabaseClient";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
 
+  const navigate = useNavigate();
+
+  const [profile, setProfile] = useState(null);
+
+  useEffect(() => {
+
+    const getUserData = async () => {
+
+      const {
+        data: { user },
+        error
+      } = await supabase.auth.getUser();
+
+      if (error) {
+        console.log(error);
+        return;
+      }
+
+      if (!user) return;
+
+      console.log("USER =", user);
+
+      setProfile({
+        nom: user.user_metadata.nom,
+        prenom: user.user_metadata.prenom,
+        email: user.email
+      });
+
+    };
+
+    getUserData();
+
+  }, []);
+
+  const handleLogout = async () => {
+
+    await supabase.auth.signOut();
+
+    navigate("/auth/login");
+
+  };
+
   return (
 
-    <nav className="navbar navbar-expand navbar-light topbar custom-topbar shadow-sm mb-4">
+    <nav className="navbar navbar-expand custom-topbar">
 
-      {/* LEFT SIDE */}
-      <div className="d-flex align-items-center">
+      {/* LEFT */}
+      <div className="topbar-left">
 
-        <button
-          id="sidebarToggleTop"
-          className="btn mobile-toggle d-md-none rounded-circle mr-3"
-        >
+        <button className="mobile-toggle d-md-none">
           <i className="fa fa-bars"></i>
         </button>
 
-        {/* SEARCH */}
-        <form className="d-none d-sm-inline-block navbar-search">
+        <div className="custom-search">
 
-          <div className="input-group custom-search">
+          <i className="fas fa-search search-icon"></i>
 
-            <span className="search-icon">
-              <i className="fas fa-search"></i>
-            </span>
+          <input
+            type="text"
+            placeholder="Search scan, project, report..."
+          />
 
-            <input
-              type="text"
-              className="form-control border-0"
-              placeholder="Rechercher scan, projet, rapport..."
-            />
+          <button>
+            Search
+          </button>
 
-            <button className="search-btn" type="button">
-              Search
-            </button>
-
-          </div>
-
-        </form>
+        </div>
 
       </div>
 
-      {/* RIGHT SIDE */}
-      <ul className="navbar-nav ml-auto align-items-center">
+      {/* RIGHT */}
+      <div className="topbar-right">
 
-        {/* ALERTS */}
-        <li className="nav-item mx-2">
+        {/* NOTIFICATION */}
+        <div className="header-icon-box">
 
-          <div className="header-icon-box">
+          <i className="fas fa-bell"></i>
 
-            <i className="fas fa-bell"></i>
+          <span className="notification-badge">
+            3
+          </span>
 
-            <span className="notification-badge">
-              3
-            </span>
+        </div>
 
-          </div>
+        {/* MESSAGE */}
+        <div className="header-icon-box">
 
-        </li>
+          <i className="fas fa-envelope"></i>
 
-        {/* MESSAGES */}
-        <li className="nav-item mx-2">
+          <span className="notification-badge">
+            7
+          </span>
 
-          <div className="header-icon-box">
+        </div>
 
-            <i className="fas fa-envelope"></i>
+        {/* PROFILE */}
+        <div className="profile-container dropdown">
 
-            <span className="notification-badge">
-              7
-            </span>
-
-          </div>
-
-        </li>
-
-        {/* DIVIDER */}
-        <div className="topbar-divider d-none d-sm-block"></div>
-
-        {/* USER */}
-        <li className="nav-item dropdown no-arrow">
-
-          <a
-            className="nav-link dropdown-toggle user-box"
-            href="#"
+          <button
+            className="profile-box dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
           >
 
             <div className="user-info">
 
               <span className="user-name">
-                Admin
+
+                {
+                  profile
+                    ? `${profile.prenom} ${profile.nom}`
+                    : "Loading..."
+                }
+
               </span>
 
               <span className="user-role">
-                Security Analyst
+                {profile?.email}
               </span>
 
             </div>
 
             <img
-              className="img-profile rounded-circle"
-              src="https://i.pravatar.cc/150?img=12"
+              className="img-profile"
+              src={`https://ui-avatars.com/api/?name=${encodeURIComponent(
+                `${profile?.prenom || ""} ${profile?.nom || ""}`
+              )}&background=4435a5&color=fff&length=2`}
               alt="profile"
             />
 
-          </a>
+          </button>
 
-        </li>
+          {/* DROPDOWN */}
+          <div className="dropdown-menu dropdown-menu-end profile-dropdown">
+            <button
+              className="dropdown-item logout-btn"
+              onClick={handleLogout}
+            >
+              <i className="fas fa-sign-out-alt"></i>
 
-      </ul>
+              Logout
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
 
     </nav>
 

@@ -1,0 +1,169 @@
+is_global = true
+build_property.TargetFramework = net9.0
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Web_KB
+build_property.RootNamespace = Web_KB
+build_property.ProjectDir = D:\E-Jobz_KhadijaBouallaoui\Web_KB\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\E-Jobz_KhadijaBouallaoui\Web_KB
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Candidature/CandidatureCandidat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FuZGlkYXR1cmVcQ2FuZGlkYXR1cmVDYW5kaWRhdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Candidature/CandidatureEntreprise.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FuZGlkYXR1cmVcQ2FuZGlkYXR1cmVFbnRyZXByaXNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Candidature/ConfirmerCandidature.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FuZGlkYXR1cmVcQ29uZmlybWVyQ2FuZGlkYXR1cmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Compte/CandidatProfil.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHRlXENhbmRpZGF0UHJvZmlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Compte/ChangeMotDePasse.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHRlXENoYW5nZU1vdERlUGFzc2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Compte/EditCompetences.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHRlXEVkaXRDb21wZXRlbmNlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Compte/EditFormations.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHRlXEVkaXRGb3JtYXRpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Compte/EntrepriseProfil.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHRlXEVudHJlcHJpc2VQcm9maWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Compte/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHRlXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Compte/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHRlXExvZ291dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Compte/RecruteurProfil.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHRlXFJlY3J1dGV1clByb2ZpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Compte/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHRlXFJlZ2lzdGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Compte/VerifyEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHRlXFZlcmlmeUVtYWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Dashboard/DashboardCandidat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXERhc2hib2FyZENhbmRpZGF0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Dashboard/DashboardRecruteur.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXERhc2hib2FyZFJlY3J1dGV1ci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Error/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Offre/AjoutOffreEmploi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmcmVcQWpvdXRPZmZyZUVtcGxvaS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Offre/OffrePostuler.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmcmVcT2ZmcmVQb3N0dWxlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Offre/OffresEmploiDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmcmVcT2ZmcmVzRW1wbG9pRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Offre/OffresEmploisAll.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmcmVcT2ZmcmVzRW1wbG9pc0FsbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Publication/AfficherPublication.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVibGljYXRpb25cQWZmaWNoZXJQdWJsaWNhdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Publication/CreatePublication.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVibGljYXRpb25cQ3JlYXRlUHVibGljYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Shared/_CompteLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Db21wdGVMYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Shared/_LoginPartiel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Shared/_NavbarLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZiYXJMYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Shared/_NavbarLayoutRecruteur.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZiYXJMYXlvdXRSZWNydXRldXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Shared/_NavBarPartiel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZCYXJQYXJ0aWVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Shared/_NavBarPartielRecruteur.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZCYXJQYXJ0aWVsUmVjcnV0ZXVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/E-Jobz_KhadijaBouallaoui/Web_KB/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-zl73ps8rlg

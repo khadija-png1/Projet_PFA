@@ -1,0 +1,189 @@
+﻿@model Web_KB.Models.OffresEmploiViewModelDetail
+
+@{
+    ViewData["Title"] = "Offre";
+    Layout = "~/Views/Shared/_NavbarLayout.cshtml";
+}
+
+<form asp-controller="Candidature" asp-action="ConfirmerCandidature" method="get">
+    <input type="hidden" name="OffreEmploiId" value="@Model.Id" />
+  
+
+<div class="container mt-4">
+    <div class="row g-4">
+
+        <!-- ===== COLONNE GAUCHE : OFFRE ===== -->
+        <div class="col-lg-8">
+             
+
+            <div class="job-card card shadow-lg p-4 position-relative">
+                   
+
+                <!-- LOGO EN HAUT À GAUCHE -->
+                @if (!string.IsNullOrEmpty(Model.Entreprise?.Logo))
+                {
+                    <img src="@Model.Entreprise.Logo" alt="@Model.Entreprise.Nom Logo" class="offer-logo" />
+                }
+
+                <!-- HEADER -->
+                <div class="job-header mt-4">
+                    <h2 class="job-title">@Model.Titre</h2>
+                    <div class="job-company">
+                        <span class="company-name">@Model.Entreprise?.Nom</span>
+                        <span class="job-location">• @Model.Lieu</span>
+                    </div>
+                </div>
+
+                <!-- INFOS -->
+                <div class="job-infos">
+                    <span class="job-badge">@Model.TypeContrat</span>
+                    <span class="job-badge">💰 @Model.Salaire</span>
+                    <span class="job-badge">📅 @Model.DatePublication.ToShortDateString()</span>
+                </div>
+
+                <hr />
+
+                <!-- DESCRIPTION OFFRE (paragraphe séparé) -->
+                <div class="job-description">
+                    @foreach (var paragraph in Model.Description.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        <p>@paragraph</p>
+                    }
+                </div>
+
+                <!-- ACTION -->
+                <div class="job-action">
+                    <button type="submit" class="btn btnGreen text-light px-4" >
+                        Postuler
+                    </button>
+                </div>
+
+            </div>
+        </div>
+       
+        <!-- ===== COLONNE DROITE : ENTREPRISE ===== -->
+        <div class="col-lg-4">
+
+            <div class="job-card card shadow-lg p-4 sticky-company">
+
+                <h5 class="company-title">
+                    À propos de l’entreprise
+                </h5>
+
+                <p class="company-name mb-2">
+                    @Model.Entreprise?.Nom
+                </p>
+
+                <div class="company-description">
+                    @foreach (var paragraph in Model.Entreprise?.Description?.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries) ?? new string[0])
+                    {
+                        <p>@paragraph</p>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+ </form>
+<style>
+    /* ===== LOGO FLOTTANT DANS LA CARD OFFRE ===== */
+    .offer-logo {
+        position: absolute; /* par rapport à la card */
+        top: -20px;
+        left: -20px;
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        border-radius: 12px;
+        border: 2px solid #ddd;
+        background-color: #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        z-index: 10;
+    }
+
+    .job-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 28px;
+        position: relative; /* important pour que le logo absolute fonctionne */
+    }
+
+    .job-header {
+        margin-bottom: 12px;
+    }
+
+    .job-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #2d2d2d;
+    }
+
+    .job-company {
+        font-size: 1rem;
+        color: #666;
+    }
+
+    .company-name {
+        font-weight: 600;
+        color: rgb(32, 124, 106);
+    }
+
+    .job-location {
+        margin-left: 6px;
+    }
+
+    .job-infos {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 16px 0;
+    }
+
+    .job-badge {
+        background-color: #f0f4f3;
+        color: rgb(32, 124, 106);
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .job-description p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #444;
+        margin-bottom: 12px;
+    }
+
+    .job-action {
+        margin-top: 25px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .btnGreen {
+        background-color: rgb(32, 124, 106);
+        border-radius: 30px;
+        font-weight: 600;
+    }
+
+    /* ===== CARD ENTREPRISE DROITE ===== */
+    .company-title {
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #2d2d2d;
+    }
+
+    .company-description p {
+        font-size: 0.9rem;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 10px;
+    }
+
+    .sticky-company {
+        position: sticky;
+        top: 90px;
+    }
+</style>

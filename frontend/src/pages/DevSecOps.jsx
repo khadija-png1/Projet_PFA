@@ -1,81 +1,82 @@
 import "../style/table.css";
 import "../style/scan.css";
 
-import Form from 'react-bootstrap/Form';
-import React from "react";
-
-import ButtonScan from "../components/ButtonScan";
+import Form from "react-bootstrap/Form";
+import React, { useState } from "react";
 
 function DevSecOps() {
+  const [file, setFile] = useState(null);
+  const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleFileChange = (e) => {
+    console.log("FILE SELECTED:", e.target.files[0]);
+    setFile(e.target.files[0]);
+  };
+
+  const handleScan = async () => {
+    if (!file) {
+      alert("Select ZIP first");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    setLoading(true);
+
+    try {
+      const res = await fetch("http://localhost:4000/scan", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      console.log("SCAN RESULT:", data);
+      setResult(data);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="container-fluid py-5">
-
       <div className="upload-card">
 
-        <div className="upload-header">
-          <div className="upload-icon-container upload-icon">
+        <h2>DevSecOps Scan</h2>
+        <p>Importer un fichier ZIP</p>
 
-            <i className="fas fa-code " />
-          </div>
-          <div>
-            <h2 className="upload-title">
-              DevSecOps Scan
-            </h2>
+        <Form.Group className="mb-4">
+          <Form.Label>Fichier ZIP</Form.Label>
 
-            <p className="upload-subtitle">
-              Importez un dossier zip ou un fichier
-            </p>
-          </div>
-        </div>
+          <Form.Control
+            type="file"
+            onChange={handleFileChange}
+          />
+        </Form.Group>
 
-  <Form.Group controlId="formFileLg" className="mb-4">
-
-  <Form.Label className="custom-label">
-    Sélectionner un fichier ou dossier ZIP
-  </Form.Label>
-
-  <div className="custom-file-upload">
-
-    <label htmlFor="fileUpload" className="file-upload-label">
-
-      <div className="file-upload-content">
-
-        <div className="file-icon-container">
-          <i className="fas fa-cloud-upload-alt"></i>
-        </div>
-
-        <div>
-          <h5 className="file-title">
-            Glissez votre fichier ici
-          </h5>
-
-          <p className="file-subtitle">
-            ou cliquez pour sélectionner un fichier ZIP
-          </p>
-        </div>
+        <button
+          className="btn btn-success"
+          onClick={handleScan}
+          disabled={loading}
+        >
+          {loading ? "Scan en cours..." : "Lancer scan DevSecOps"}
+        </button>
 
       </div>
 
-    </label>
+      {result && (
+        <div className="mt-4">
+          <h4>Scan Result</h4>
 
-    <Form.Control
-      id="fileUpload"
-      type="file"
-      size="lg"
-      className="d-none"
-    />
-
-  </div>
-
-</Form.Group>
-
-        <div className="scan-button-container">
-          <ButtonScan nom="Lancer scan DevSecOps" />
+          <pre style={{ background: "#111", color: "#0f0", padding: "10px" }}>
+            {JSON.stringify(result, null, 2)}
+          </pre>
         </div>
-
-      </div>
-
+      )}
     </div>
   );
 }

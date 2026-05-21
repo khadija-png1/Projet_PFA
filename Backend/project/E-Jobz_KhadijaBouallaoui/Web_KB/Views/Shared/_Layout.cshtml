@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Web_KB</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Web_KB.styles.css" asp-append-version="true" />
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/home.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <!-- Logo + texte -->
+                <a class="navbar-brand d-flex align-items-center" href="#page-top">
+                    <img class="masthead-avatar me-2" src="../images/logo.png" alt="logo" />
+                    <span id="colorgreen" class="masthead-heading">E-JOBZ</span>
+                </a>
+
+                <!-- Bouton menu mobile -->
+                <button class="navbar-toggler text-uppercase font-weight-bold  text-white rounded"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Menu -->
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <partial name="_LoginPartiel" />
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <!-- Copyright Section-->
+    <div id="footercopy"class="copyright py-4 text-center text-white">
+        <div class="container"><small>Copyright &copy; Your Website 2023</small></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/home.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <style>
+        /* Couleur de fond de la navbar */
+        #mainNav {
+            background-color: #f0ecec !important;
+        }
+
+            /* Liens visibles sur fond clair */
+            #mainNav .nav-link {
+                color: rgb(32 124 106) !important;
+                transition: all 0.2s ease-in-out;
+            }
+
+                /* Hover doré */
+                #mainNav .nav-link:hover {
+                    color: white !important;
+                    transform: translateY(-2px);
+                }
+
+                /* Icônes suivent la couleur du texte */
+                #mainNav .nav-link i {
+                    color: inherit;
+                }
+
+            #mainNav .navbar-toggler{
+                color: rgb(32 124 106) !important;
+            }
+
+        #footercopy{
+            background-color: #f0ecec !important;
+        }
+
+        #footercopy .container{
+                color: rgb(32 124 106) !important;
+            }
+
+        #colorgreen {
+            color: rgb(32, 124, 106) !important;
+        }       
+    </style>
+
+</body>
+</html>

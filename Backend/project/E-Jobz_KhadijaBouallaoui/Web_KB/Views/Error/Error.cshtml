@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Erreur";
+    Layout = "~/Views/Shared/_CompteLayout.cshtml"; // 👈 mieux qu’une navbar
+}
+
+<div class="container min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="card shadow-lg text-center p-5 rounded-4" style="max-width:520px;">
+
+        <img src="~/images/logo.png" alt="Logo" class="mb-4" style="width:110px;" />
+
+        <h1 class="display-5 text-danger mb-3">
+            <i class="fas fa-exclamation-triangle me-2"></i> Oups !
+        </h1>
+
+        <p class="lead mb-4">@ViewData["Message"]</p>
+
+        <div class="d-grid gap-2">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-success">
+                <i class="fas fa-home me-2"></i> Accueil
+            </a>
+
+            <a asp-controller="Compte" asp-action="Login" class="btn btn-success">
+                Connexion
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .btn-success {
+        background-color: rgb(32, 124, 106); /* ton vert */
+        border: none;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.2s ease-in-out;
+    }
+
+        .btn-success:hover {
+            background-color: rgb(32, 150, 106);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+    .card {
+        border: none;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+    h1.display-4 i {
+        color: rgb(220, 53, 69); /* rouge erreur */
+    }
+</style>

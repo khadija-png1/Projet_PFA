@@ -1,0 +1,97 @@
+﻿@using Web_KB.Models;
+@model RegisterViewModel;
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_CompteLayout.cshtml";
+}
+<div class="compte-container">
+    <div class="compte-image" aria-hidden="true"></div>
+    <div class="compte-box register">
+
+        <img class="masthead-avatar mb-5 " src="../images/logo.png" alt="..." />
+        <h2 class="text mb-5">S'inscrire</h2>
+
+                
+        <form asp-action="Register" method="post"   >
+
+            <div class="mb-3">
+                <div class="d-flex gap-3">
+                    <!-- Card Candidat -->
+                    <label asp-for="Role" class="card role-card p-3 flex-fill d-flex flex-column" style="cursor:pointer;">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5 class="mb-1">Candidat</h5>
+                            </div>
+                            <input asp-for="Role" type="radio" value="Candidat" class="radio-btn" />
+                        </div>
+                    </label>
+
+                    <!-- Card Recruteur -->
+                    <label asp-for="Role" class="card role-card p-3 flex-fill d-flex flex-column" style="cursor:pointer;">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5 class="mb-1">Recruteur</h5>
+                            </div>
+                            <input asp-for="Role" type="radio" value="Recruteur" class="radio-btn" />
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="Nom" class="form-label"></label>
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Prenom" class="form-label"></label>
+                <input asp-for="Prenom" class="form-control" />
+                <span asp-validation-for="Prenom" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="MotDePasse" class="form-label"></label>
+                <input asp-for="MotDePasse" class="form-control" />
+                <span asp-validation-for="MotDePasse" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="ComfirmeMotDePasse" class="form-label"></label>
+                <input asp-for="ComfirmeMotDePasse" class="form-control" />
+                <span asp-validation-for="ComfirmeMotDePasse" class="text-danger"></span>
+            </div>
+            <input id="colorgreen"type="submit" value="Register" class="btn btn-success w-100 p-2" />
+            <p class="text-center mt-2 link">
+                Vous avez un compte ? <a asp-controller="Compte" asp-action="Login" class="text-decoration-none">Connectez-vous</a>
+            </p>
+            <div class="text-center">
+                <a asp-controller="Home" asp-action="Index" class="text-decoration-none mt-3">Retour au home</a>
+            </div>
+
+
+        </form>
+        <div class="text-center mb-4">
+            <span class="divider">OR</span>
+        </div>
+
+               <a href="/login-google" class="btn btn-google w-100 p-2">
+                  S'inscrire avec Google
+                 </a>
+       
+
+
+    </div>
+</div>
+
+<style>
+    #colorgreen {
+        background-color: rgb(32, 124, 106) !important; /* couleur verte */
+    }
+
+</style>

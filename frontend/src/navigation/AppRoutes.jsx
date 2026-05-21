@@ -9,7 +9,7 @@ import Report from "../pages/Report";
 import History from "../pages/History";
 import DevSecOps from "../pages/DevSecOps";
 import Pentesting from "../pages/Pentesting";
-
+import ProtectedRoute from "../components/ProtectedRoute";
 function AppRoutes() {
   return (
     <Router>
@@ -19,8 +19,15 @@ function AppRoutes() {
         <Route path="/auth/login" element={<Login />} />
         <Route path="/auth/register" element={<Register />} />
 
-        {/* Layout Dashboard */}
-        <Route path="/UserGui" element={<UserGui />}>
+        <Route
+          path="/UserGui"
+          element={
+            <ProtectedRoute>
+              <UserGui />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<div>Welcome Dashboard</div>} />
 
           <Route path="Project" element={<Project />} />
           <Route path="Report" element={<Report />} />
@@ -30,7 +37,7 @@ function AppRoutes() {
         </Route>
 
       </Routes>
-    </Router>
+    </Router >
   );
 }
 

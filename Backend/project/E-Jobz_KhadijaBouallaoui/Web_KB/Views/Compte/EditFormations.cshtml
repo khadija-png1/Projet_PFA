@@ -1,0 +1,36 @@
+﻿@model CandidatProfilViewModel
+@{
+    ViewData["Title"] = "Éditer Formations";
+    Layout = "~/Views/Shared/_NavbarLayout.cshtml";
+}
+
+<h3>Éditer les formations</h3>
+
+<form asp-action="EditFormations" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <ul class="list-group mb-3">
+        @for (int i = 0; i < Model.Formation.Count; i++)
+        {
+            <li class="list-group-item d-flex flex-wrap justify-content-between mb-2">
+                <input type="hidden" name="Formation[@i].Id" value="@Model.Formation[i].Id" />
+
+                <input type="text" name="Formation[@i].Diplome" value="@Model.Formation[i].Diplome" class="form-control me-2 mb-2" placeholder="Diplôme" required />
+
+                <input type="text" name="Formation[@i].Ecole" value="@Model.Formation[i].Ecole" class="form-control w-25 me-2 mb-2" placeholder="École" required />
+                <input type="date" name="Formation[@i].DateDebut"
+                       value="@Model.Formation[i].DateDebut.ToString("yyyy-MM-dd")"
+                       class="form-control me-2 mb-2" required />
+
+                <input type="date" name="Formation[@i].DateFin"
+                       value="@Model.Formation[i].DateFin.ToString("yyyy-MM-dd")"
+                       class="form-control me-2 mb-2" required />
+
+
+                <input type="text" name="Formation[@i].Description" value="@Model.Formation[i].Description" class="form-control w-25 mb-2" placeholder="Description" />
+            </li>
+        }
+    </ul>
+
+    <button type="submit" class="btn btn-success">Enregistrer les formations</button>
+</form>
