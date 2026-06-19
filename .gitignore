@@ -1,15 +1,61 @@
+# =========================
 # Python
+# =========================
 venv/
 __pycache__/
 *.pyc
 
-# React
+# =========================
+# Node.js / React
+# =========================
 node_modules/
+Backend/node_modules/
+frontend/node_modules/
 
-# Reports
+# =========================
+# Variables d'environnement
+# =========================
+.env
+.env.*
+
+# =========================
+# Rapports générés
+# =========================
+reports/
+Backend/reports/
+*.pdf
 *.json
 *.xml
 *.html
 
+# =========================
+# Fichiers uploadés
+# =========================
+uploads/
+Backend/uploads/
+
+# =========================
 # Logs
+# =========================
 *.log
+
+# =========================
+# Résultats des scans
+# =========================
+Scripts/results/
+
+# =========================
+# Fichiers système
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# VS Code
+# =========================
+.vscode/
+
+# =========================
+# JetBrains
+# =========================
+.idea/

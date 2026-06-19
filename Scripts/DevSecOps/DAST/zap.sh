@@ -1,25 +1,27 @@
 #!/bin/bash
 
-echo "=== ZAP SCAN ==="
-
-TARGET_URL=$1
-RESULT_DIR="results"
-
+TARGET=$1
+RESULT_DIR="../results"
 mkdir -p "$RESULT_DIR"
 
-ZAP_DIR="/c/Program Files/ZAP/Zed Attack Proxy"
+echo "========================="
+echo "      ZAP SCAN"
+echo "========================="
 
-if [ ! -f "$ZAP_DIR/zap.bat" ]; then
-  echo "❌ ZAP introuvable dans $ZAP_DIR"
+if [ -z "$TARGET" ]; then
+  echo "Usage: ./zap.sh <target>"
   exit 1
 fi
 
-# 🔥 se placer dans le dossier ZAP
-cd "$ZAP_DIR" || exit 1
+ZAP_PATH="/d/zap/Zed_Attack_Proxy/zap.bat"
 
-./zap.bat -cmd \
-  -quickurl "$TARGET_URL" \
-  -quickprogress \
-  -quickout "/d/Projet_PFA/Scripts/DevSecOps/results/zap-report.html"
+if [ ! -f "$ZAP_PATH" ]; then
+  echo "❌ ZAP introuvable"
+  exit 1
+fi
 
-echo "ZAP DONE"
+"$ZAP_PATH" -cmd \
+  -quickurl "$TARGET" \
+  -quickout "$RESULT_DIR/zap-report.html"
+
+echo "[+] ZAP scan saved in results/"
