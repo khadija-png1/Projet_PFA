@@ -1,53 +1,73 @@
-import React from 'react'
+import { useEffect, useState } from "react";
+import { supabase } from "../supabaseClient";
 
 function Report() {
+  const [reports, setReports] = useState([]);
+
+  const fetchReports = async () => {
+    const { data, error } = await supabase
+      .from("report")
+      .select("*")
+      .order("id", { ascending: false });
+
+    if (error) console.log(error);
+    else setReports(data);
+  };
+
+  useEffect(() => {
+    fetchReports();
+    const interval = setInterval(fetchReports, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div>
-      <div className="container-fluid">
+    <div style={{ background: "#455fa1", minHeight: "100vh", padding: 20, color: "white" }}>
+      
+      <h2 style={{ color: "#ffcc00" }}>
+        📄 SECURITY REPORTS
+      </h2>
 
-        <h1 className="h3 mb-2 text-gray-800">Rapports</h1>
-        <hr />
+      <table style={{
+        width: "100%",
+        marginTop: 20,
+        background: "#111827",
+        borderRadius: 10,
+        border: "1px solid #1f2937"
+      }}>
+        
+        <thead>
+          <tr style={{ background: "#1f2937" }}>
+            <th>TITLE</th>
+            <th>TYPE</th>
+            <th>SUMMARY</th>
+            <th>PDF</th>
+          </tr>
+        </thead>
 
-        <div className="card shadow mb-4">
-          <div className="card-header py-3">
-            <h6 className="m-0 font-weight-bold text-primary">DataTables Example</h6>
-          </div>
-          <div className="card-body">
-            <div className="table-responsive">
-              <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
-                <thead>
-                  <tr>
-                    <th className="attriutes">Titre Rapport</th>
-                    <th className="attriutes">Type Rapport</th>
-                    <th className="attriutes">Rapport</th>
-                    <th className="attriutes">Date</th>
-                  </tr>
-                </thead>
+        <tbody>
+          {reports.map((r) => (
+            <tr key={r.id}>
+              <td>{r.report_name}</td>
+              <td>{r.report_type}</td>
               
-                <tbody>
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-  
-                  </tr>
-                  <tr>
-                    <td>Garrett Winters</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>63</td>
+              <td>{r.summary?.slice(0, 60)}...</td>
 
-                  </tr>
-          
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+              <td>
+                <a
+                  href={r.report_path}
+                  target="_blank"
+                  style={{ color: "#00ffcc" }}
+                >
+                  OPEN PDF
+                </a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-      </div>
     </div>
-  )
+  );
 }
-export default Report
+
+export default Report;

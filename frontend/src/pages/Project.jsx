@@ -1,57 +1,98 @@
-import React from 'react'
-
-import "../style/table.css"
+import { useEffect, useState } from "react";
+import { supabase } from "../supabaseClient";
 
 function Project() {
+  const [projects, setProjects] = useState([]);
+
+  const fetchProjects = async () => {
+    const { data, error } = await supabase
+      .from("project")
+      .select("*")
+      .order("id", { ascending: false });
+
+    if (error) {
+      console.log(error);
+    } else {
+      setProjects(data);
+    }
+  };
+
+  useEffect(() => {
+    fetchProjects();
+
+    const interval = setInterval(fetchProjects, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="container-fluid">
+    <div style={{ background: "#0a0f1c", minHeight: "100vh", padding: 20, color: "white" }}>
+      
+      <h2 style={{ color: "#00ffcc", textShadow: "0 0 10px #00ffcc" }}>
+        🛡️ DEVSECOPS PROJECTS
+      </h2>
 
-        <h1 className="h3 mb-2 text-gray-800">Projets</h1>
-        <hr />
-        <div className="card shadow mb-4">
-          <div className="card-header py-3">
-            <h6 className="m-0 font-weight-bold text-primary">DataTables Example</h6>
-          </div>
-          <div className="card-body">
-            <div className="table-responsive">
-              <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
-                <thead >
-                  <tr >
-                    <th className="attriutes">Type Scan</th>
-                    <th className="attriutes">Titre Projet</th>
-                    <th className="attriutes">Description</th>
-                    <th className="attriutes">Rapport</th>
-                    <th className="attriutes">Nombre de Vulnerabilité</th>
-                    <th className="attriutes">Date Scan</th>
-                  </tr>
-                </thead>
+      <table style={{
+        width: "100%",
+        marginTop: 20,
+        background: "#111827",
+        borderRadius: 10,
+        overflow: "hidden",
+        border: "1px solid #1f2937"
+      }}>
+        
+        <thead>
+          <tr style={{ background: "#1f2937" }}>
+            <th>TYPE</th>
+            <th>TITLE</th>
+            <th>DESCRIPTION</th>
+            <th>SCORE</th>
+            <th>DATE</th>
+          </tr>
+        </thead>
 
-                <tbody>
-                  <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td>$320,800</td>
-                  </tr>
-                  <tr>
-                    <td>Garrett Winters</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>63</td>
-                    <td>2011/07/25</td>
-                    <td>$170,750</td>
-                  </tr>
-       
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+        <tbody>
+          {projects.length === 0 ? (
+            <tr>
+              <td colSpan="6" style={{ textAlign: "center", padding: 20 }}>
+                Loading security scans...
+              </td>
+            </tr>
+          ) : (
+            projects.map((p) => (
+              <tr key={p.id} style={{ borderBottom: "1px solid #2d3748" }}>
+                
+                <td>
+                  <span style={{
+                    padding: "4px 8px",
+                    borderRadius: 5,
+                    background: p.scan_type === "SAST" ? "#00ff88" : "#ff0055",
+                    color: "black",
+                    fontWeight: "bold"
+                  }}>
+                    {p.scan_type}
+                  </span>
+                </td>
 
-      </div>
-  )
+                <td>{p.title}</td>
+                <td>{p.description}</td>
+
+             
+
+                <td style={{ color: "#00ffcc" }}>
+                  {p.severity_score}
+                </td>
+
+                <td>
+                  {new Date(p.created_at).toLocaleString()}
+                </td>
+              </tr>
+            ))
+          )}
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
-export default Project
+export default Project;
